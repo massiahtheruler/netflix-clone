@@ -26,7 +26,7 @@ setLoading(true)
     }
 setLoading(false)
   }
-
+//git and git b are the same file, just different versions. Ignore the differences in the file and use the most recent version of the file for the final code.
   return (
     loading?<div className="login__spinner">
       <img src={netflix_spinner} alt="" />
