@@ -35,6 +35,7 @@ return () => {
 
   return (
     <div ref={navRef} className={`navbar ${className}`.trim()}>
+      <div className="navbar__container">
       <div className="navbar-left">
         <img src={logo} alt="Netflix logo" />
         <ul>
@@ -69,6 +70,7 @@ return () => {
         <p onClick={handleLogout}>Sign Out of Netflix</p>
     </div>
         </div>
+      </div>
       </div>
     </div>
   )

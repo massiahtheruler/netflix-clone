@@ -349,7 +349,7 @@ cursor: pointer;
     .hero__cards{
         bottom: clamp(-300px, 4vw, -100px);
         margin-top: 24px;
-        z-index: 6;
+       
     }
 
     .hero__cards .card__list{
