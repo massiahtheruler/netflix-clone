@@ -22,7 +22,7 @@
 
 A front-end streaming platform build focused on motion, interface polish, and interaction design without leaning on animation libraries or prebuilt templates.
 
-I built a Netflix-inspired streaming front end in React with Firebase authentication, protected routes, TMDB-powered content rows, cinematic autoplay trailer behavior. All major motion and UI effects were built from scratch with React, CSS, timers, overlays, and browser APIs rather than GSAP, Framer Motion, or templates.
+I built a Netflix-inspired streaming front end in React with Firebase authentication, protected routes, TMDB-powered content rows, cinematic autoplay trailer behavior. All major motion and UI effects were built from scratch with React, Tailwind, SasS, CSS, timers, overlays, and browser APIs rather than GSAP, Framer Motion, or templates.
 
 This project started as a Netflix-inspired experience, but the real goal became building the details myself: custom autoplay behavior, layered cinematic transitions, route protection, interactive content rows, and responsive layout tuning across a wide range of screen sizes.
 
@@ -122,8 +122,10 @@ React hooks
 component state
 timers
 IntersectionObserver
+SasS CSS - Tailwind hybrid optimized for style + efficiency
 CSS transforms
 CSS transitions
+Tailwind Margin, Gap, Spacing etc for efficient control
 blur, opacity, scale, and overlay layering
 mask-image and gradient composition
 That mattered to me because I wanted to understand and control the behavior directly rather than outsourcing the feel of the product to a library.
