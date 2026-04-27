@@ -18,6 +18,8 @@
 
 *** Netflix-Inspired Streaming UI ***
 
+## Summary ## <a name="summary"></a>
+
 A front-end streaming platform build focused on motion, interface polish, and interaction design without leaning on animation libraries or prebuilt templates.
 
 I built a Netflix-inspired streaming front end in React with Firebase authentication, protected routes, TMDB-powered content rows, cinematic autoplay trailer behavior. All major motion and UI effects were built from scratch with React, CSS, timers, overlays, and browser APIs rather than GSAP, Framer Motion, or templates.
