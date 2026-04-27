@@ -1,7 +1,7 @@
 # React + Vite
 
 
-<a name="get-started">## Get Started ##</a>
+## Get Started ##<a name="get-started"></a>
 
 " https://netflix-clone-delta-indol.vercel.app "
 - Live Vercel Deployed URL -
@@ -34,7 +34,7 @@ stronger error/loading states for API failures
 expanding player controls and metadata views
 This project reflects the kind of front-end work I enjoy most: interaction-heavy UI, motion with intent, product-level polish, and solving the details directly instead of covering them up with libraries.
 
-<a name="-highlights">## Highlights ##</a>
+## Highlights ##<a name="-highlights"></a>
 
 Custom cinematic hero with timed autoplay trailer behavior
 Firebase email/password authentication with sign up, login, logout, and protected routes
@@ -113,7 +113,7 @@ One of the main engineering decisions in this project was to avoid using GSAP, F
 
 All major interaction work was built with:
 
-<a name="-tech-stack">## Tech Stack ##</a>
+## Tech Stack ##<a name="-tech-stack"></a>
 
 
 React hooks
@@ -142,7 +142,7 @@ Why This Project Stands Out
 This project is strongest in the details.
 
 
-<a name="-closing">## Closing ##</a>
+## Closing ##<a name="-closing"></a>
 
 
 A lot of front-end clones stop at visual similarity. I wanted this one to behave like a product:
