@@ -1,24 +1,20 @@
 # React + Vite
 
+
+<a name="get-started">## Get Started ##</a>
+
 " https://netflix-clone-delta-indol.vercel.app "
 - Live Vercel Deployed URL -
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ [#Get Started](#-get-started)</br>
+ [#TLDR Summary](#-tldr)</br>
+ [#Highlights](#-highlights)</br>
+ [#Tech Stack](#-tech-stack)</br>
+ [#Closing](#-closing)</br>
+ 
 
 
-* Netflix-Inspired Streaming UI *
+*** Netflix-Inspired Streaming UI ***
 
 A front-end streaming platform build focused on motion, interface polish, and interaction design without leaning on animation libraries or prebuilt templates.
 
@@ -36,8 +32,8 @@ stronger error/loading states for API failures
 expanding player controls and metadata views
 This project reflects the kind of front-end work I enjoy most: interaction-heavy UI, motion with intent, product-level polish, and solving the details directly instead of covering them up with libraries.
 
+<a name="highlights">## Highlights ##</a>
 
-Highlights
 Custom cinematic hero with timed autoplay trailer behavior
 Firebase email/password authentication with sign up, login, logout, and protected routes
 Interactive title-card rows powered by live TMDB data
@@ -61,7 +57,7 @@ This means the app is not just a static mockup. It has real account handling and
 2. Cinematic Hero Experience
 The homepage hero is designed to feel more like a streaming platform landing experience than a standard banner.
 
-Features include:
+## Features include: 
 
 autoplay countdown before the trailer starts
 custom Netflix-style spinner countdown UI
@@ -115,6 +111,9 @@ One of the main engineering decisions in this project was to avoid using GSAP, F
 
 All major interaction work was built with:
 
+<a name="tech-stack">## Tech Stack ##</a>
+
+
 React hooks
 component state
 timers
@@ -139,6 +138,10 @@ TMDB API
 CSS
 Why This Project Stands Out
 This project is strongest in the details.
+
+
+<a name="closing">## Closing ##</a>
+
 
 A lot of front-end clones stop at visual similarity. I wanted this one to behave like a product:
 
