@@ -13,6 +13,42 @@ The point was not to invent a new streaming brand just for the sake of originali
 - Email: `massiah024@gmail.com`
 - Password: `Random123!321`
 
+## Project Preview
+
+The preview and walkthroughs below show the login flow, hero pacing, player transitions, and profile controls that make this clone feel more like a real streaming product than a static UI copy.
+
+![Netflix homepage hero](./readme-assets/netflix-hero.png)
+
+## Walkthrough GIFs
+
+### Login Flow
+
+The sign-in flow uses a real Firebase auth path instead of a decorative mock screen, so the app opens with the same protected-route logic that controls the rest of the experience.
+
+![Netflix login walkthrough](./readme-assets/netflix-login.gif)
+
+### Autoplay Countdown
+
+This walkthrough shows the homepage trailer waiting on an idle timer before it takes over. The countdown badge is there on purpose, with a zoomed focus treatment that makes the pending autoplay readable right away so the transition feels timed and earned instead of random.
+
+![Netflix autoplay countdown walkthrough](./readme-assets/netflix-auto-plays.gif)
+
+## Feature Screens
+
+The screenshots below focus on the player presentation and account settings work that support the broader streaming flow without breaking the established product language.
+
+### Player Preview
+
+This player state keeps the route feeling curated even before full playback takes over. The preview layout, fallback content handling, and branded visual treatment were all tuned to make the transition feel deliberate instead of like a blank loading handoff.
+
+![Netflix player preview](./readme-assets/netflix-player-preview.png)
+
+### Account And Security Modal
+
+The profile dropdown now opens into an account settings modal with profile icon, display name, email, and password controls. It stays inside the same dark cinematic surface language instead of feeling like a generic settings screen dropped in from somewhere else.
+
+![Netflix account and security modal](./readme-assets/netflix-account-modal.png)
+
 ## Core Features
 
 - Firebase email/password auth with sign up, sign in, sign out, and route protection
