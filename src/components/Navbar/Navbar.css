@@ -130,18 +130,33 @@ cursor: not-allowed;
     position: absolute;
     top: 100%;
     right: 0;
-    width: max-content;
-    background: #191919;
-    padding: 16px 24px;
-    border-radius: 2px;
-    text-decoration: underline;
+    min-width: 220px;
+    background: rgba(15, 15, 15, 0.94);
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 1;
     display: none;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(16px);
 }
 
-.navbar__dropdown p {
+.navbar__dropdown button {
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: #f4f4f4;
+    text-align: left;
     font-size: clamp(0.78rem, 0.72rem + 0.35vw, 1.0rem);
     cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar__dropdown button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
 }
 
 .navbar__profile:hover .navbar__dropdown {

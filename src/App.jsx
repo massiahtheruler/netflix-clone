@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Home from './pages/Home/Home'
-import Login from './pages/Login/Login'
-import Player from './pages/Player/Player'
 import { auth } from './firebase'
 import spinner from './assets netflix/netflix_spinner.gif'
 import './App.css'
 
 const TEST_AUTH_DELAY_MS = import.meta.env.DEV ? 2000 : 0
+const Login = lazy(() => import('./pages/Login/Login'))
+const Player = lazy(() => import('./pages/Player/Player'))
 
 function AuthLoadingScreen() {
   return (
@@ -70,11 +72,21 @@ function PublicRoute({ children }) {
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
-        <Route path='/player/:id' element={<ProtectedRoute><Player /></ProtectedRoute>} />
-      </Routes>
+      <ToastContainer
+        position='bottom-right'
+        autoClose={3200}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        theme='dark'
+      />
+      <Suspense fallback={<AuthLoadingScreen />}>
+        <Routes>
+          <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path='/login' element={<PublicRoute><Login /></PublicRoute>} />
+          <Route path='/player/:id' element={<ProtectedRoute><Player /></ProtectedRoute>} />
+        </Routes>
+      </Suspense>
     </div>
   )
 }

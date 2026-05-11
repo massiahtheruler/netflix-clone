@@ -1,11 +1,24 @@
 import { initializeApp } from "firebase/app";
 import {
+  EmailAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
+  reauthenticateWithCredential,
   signInWithEmailAndPassword,
   signOut,
+  updateEmail,
+  updatePassword,
+  updateProfile,
 } from "firebase/auth";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const firebaseConfig = {
@@ -21,10 +34,35 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const formatAuthError = (error) => {
+  if (!error?.code) {
+    return "Something went wrong";
+  }
+
+  return error.code.split("/")[1].split("-").join(" ");
+};
+
+const syncUserDocument = async (updates) => {
+  if (!auth.currentUser) {
+    return;
+  }
+
+  const userQuery = query(collection(db, "user"), where("uid", "==", auth.currentUser.uid));
+  const snapshot = await getDocs(userQuery);
+
+  await Promise.all(
+    snapshot.docs.map((docSnapshot) => updateDoc(docSnapshot.ref, updates)),
+  );
+};
+
 const signup = async (username, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
+
+    await updateProfile(user, {
+      displayName: username,
+    });
 
     await addDoc(collection(db, "user"), {
       uid: user.uid,
@@ -36,8 +74,7 @@ const signup = async (username, email, password) => {
     return user;
   } catch (error) {
     console.log(error);
-    alert(error.message);
-    toast.error(error.code.split('/')[1].split('-').join(" "))
+    toast.error(formatAuthError(error));
   }
 };
 
@@ -47,8 +84,7 @@ const login = async (email, password) => {
     return res.user;
   } catch (error) {
     console.error(error);
-    toast.error(error.code.split('/')[1].split('-').join(" "))
-    
+    toast.error(formatAuthError(error));
   }
 };
 
@@ -56,4 +92,81 @@ const logout = async () => {
   await signOut(auth);
 };
 
-export { auth, db, login, signup, logout };
+const updateAccountProfile = async ({ displayName, photoURL }) => {
+  try {
+    if (!auth.currentUser) {
+      throw new Error("No authenticated user");
+    }
+
+    await updateProfile(auth.currentUser, {
+      displayName,
+      photoURL,
+    });
+
+    await syncUserDocument({
+      username: displayName,
+      photoURL,
+    });
+
+    toast.success("Profile updated");
+    return true;
+  } catch (error) {
+    console.error(error);
+    toast.error(formatAuthError(error));
+    return false;
+  }
+};
+
+const updateAccountEmail = async ({ newEmail, currentPassword }) => {
+  try {
+    if (!auth.currentUser?.email) {
+      throw new Error("No authenticated user");
+    }
+
+    const credential = EmailAuthProvider.credential(auth.currentUser.email, currentPassword);
+
+    await reauthenticateWithCredential(auth.currentUser, credential);
+    await updateEmail(auth.currentUser, newEmail);
+    await syncUserDocument({
+      email: newEmail,
+    });
+
+    toast.success("Email updated");
+    return true;
+  } catch (error) {
+    console.error(error);
+    toast.error(formatAuthError(error));
+    return false;
+  }
+};
+
+const updateAccountPassword = async ({ currentPassword, newPassword }) => {
+  try {
+    if (!auth.currentUser?.email) {
+      throw new Error("No authenticated user");
+    }
+
+    const credential = EmailAuthProvider.credential(auth.currentUser.email, currentPassword);
+
+    await reauthenticateWithCredential(auth.currentUser, credential);
+    await updatePassword(auth.currentUser, newPassword);
+
+    toast.success("Password updated");
+    return true;
+  } catch (error) {
+    console.error(error);
+    toast.error(formatAuthError(error));
+    return false;
+  }
+};
+
+export {
+  auth,
+  db,
+  login,
+  logout,
+  signup,
+  updateAccountEmail,
+  updateAccountPassword,
+  updateAccountProfile,
+};

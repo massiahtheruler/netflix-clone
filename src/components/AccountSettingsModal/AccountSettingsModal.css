@@ -1,0 +1,343 @@
+.account-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.account-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.78)),
+    radial-gradient(circle at top, rgba(229, 9, 20, 0.22), transparent 38%);
+  backdrop-filter: blur(18px);
+}
+
+.account-modal__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(980px, 100%);
+  max-height: min(88vh, 880px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, 0.84), rgba(7, 7, 7, 0.96)),
+    rgba(0, 0, 0, 0.78);
+  box-shadow: 0 24px 100px rgba(0, 0, 0, 0.58);
+  color: #fff;
+  backdrop-filter: blur(26px);
+}
+
+.account-modal__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(229, 9, 20, 0.16),
+      transparent 30%
+    ),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 28%);
+  pointer-events: none;
+}
+
+.account-modal__header,
+.account-modal__body {
+  position: relative;
+  z-index: 1;
+}
+
+.account-modal__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.account-modal__eyebrow,
+.account-card__label {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.account-modal__header h2,
+.account-card h3 {
+  margin: 0;
+}
+
+.account-modal__close,
+.account-modal__nav button,
+.account-card__topline button,
+.account-card__actions button {
+  border: 0;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.account-modal__close {
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.account-modal__close:hover,
+.account-modal__nav button:hover,
+.account-card__topline button:hover,
+.account-card__actions button:hover {
+  transform: translateY(-1px);
+}
+
+.account-modal__body {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: 0;
+}
+
+.account-modal__nav {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+}
+
+.account-modal__nav button {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.82);
+  text-align: left;
+}
+
+.account-modal__nav button.is-active {
+  background: rgba(229, 9, 20, 0.18);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(229, 9, 20, 0.35);
+}
+
+.account-modal__content {
+  padding: 28px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.account-modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.account-modal__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.account-modal__content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.account-modal__section {
+  display: none;
+}
+
+.account-modal__section.is-visible {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.account-card {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.03)
+    ),
+    rgba(8, 8, 8, 0.76);
+}
+
+.account-card--hero {
+  background:
+    linear-gradient(120deg, rgba(229, 9, 20, 0.2), rgba(255, 255, 255, 0.04)),
+    rgba(8, 8, 8, 0.84);
+}
+
+.account-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.account-card__avatar {
+  width: 72px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.34);
+}
+
+.account-card__hint,
+.account-card__value {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.55;
+}
+
+.account-card__topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.account-card__topline button,
+.account-card__actions button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.account-card__actions button.is-primary {
+  background: #e50914;
+}
+
+.account-card__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.account-card__field {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.account-card__field span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.account-card__field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.account-card__field input:focus {
+  outline: 1px solid rgba(229, 9, 20, 0.62);
+  border-color: rgba(229, 9, 20, 0.62);
+}
+
+.account-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.account-avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.account-avatar-grid button {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.account-avatar-grid button.is-selected {
+  border-color: rgba(229, 9, 20, 0.58);
+  box-shadow: inset 0 0 0 1px rgba(229, 9, 20, 0.42);
+}
+
+.account-avatar-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.account-card__error {
+  margin: 16px 0 0;
+  color: #ff8a8a;
+}
+
+@media (max-width: 860px) {
+  .account-modal {
+    padding: 14px;
+  }
+
+  .account-modal__body {
+    grid-template-columns: 1fr;
+  }
+
+  .account-modal__nav {
+    flex-direction: row;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    overflow-x: auto;
+  }
+
+  .account-modal__content {
+    padding-top: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .account-modal__header,
+  .account-modal__nav,
+  .account-modal__content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .account-modal__header {
+    flex-direction: column;
+  }
+
+  .account-card,
+  .account-card__topline {
+    gap: 12px;
+  }
+
+  .account-card__topline {
+    flex-direction: column;
+  }
+}
