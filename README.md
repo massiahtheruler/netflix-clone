@@ -29,7 +29,7 @@ The sign-in flow uses a real Firebase auth path instead of a decorative mock scr
 
 ### Autoplay Countdown
 
-This walkthrough shows the homepage trailer waiting on an idle timer before it takes over. The countdown badge is there on purpose, with a zoomed focus treatment that makes the pending autoplay readable right away so the transition feels timed and earned instead of random.
+This walkthrough shows the homepage trailer waiting on an idle timer before it takes over. The countdown badge is there on purpose, with a zoomed focus treatment that makes the pending autoplay readable right away and gives the trailer handoff real buildup.
 
 ![Netflix autoplay countdown walkthrough](./readme-assets/netflix-auto-plays.gif)
 
@@ -39,7 +39,7 @@ The screenshots below focus on the player presentation and account settings work
 
 ### Player Preview
 
-This player state keeps the route feeling curated even before full playback takes over. The preview layout, fallback content handling, and branded visual treatment were all tuned to make the transition feel deliberate instead of like a blank loading handoff.
+This player state keeps the route feeling curated even before full playback takes over. The preview layout, fallback content handling, and branded visual treatment give the player route a real intermediate state before full playback begins.
 
 ![Netflix player preview](./readme-assets/netflix-player-preview.png)
 
@@ -114,7 +114,7 @@ The hero uses:
 - masked imagery, overlays, and gradients to keep the transition feeling softer and more cinematic
 - hero image masking that lets the banner dissolve more naturally into the background instead of ending in a hard edge
 
-I wanted this area to feel precise. The timer is there so the autoplay does not feel random, and the fade timing is there so the handoff from static hero to moving trailer feels intentional instead of abrupt.
+I wanted this area to feel precise. The timer gives autoplay a clear trigger, and the fade timing keeps the handoff from static hero to moving trailer smooth.
 
 ### 3. Interactive Title Rails
 
@@ -130,18 +130,18 @@ I built the rails to support:
 - dynamic routing into title-specific player pages
 - separate categories for top rated, now playing, popular, and upcoming content
 
-I wanted components like rows and cards to keep the familiar Netflix feel while pushing the interaction and polish enough to feel more intentional, more memorable, and a little more distinctive without breaking that identity.
+I wanted components like rows and cards to keep the familiar Netflix feel while still pushing the interaction and polish far enough to stand above the expected class-project version of a clone.
 
 ### 4. Player States That Stay Coordinated
 
-The player page has its own pacing and state rules instead of just embedding a trailer and calling it done.
+The player page has its own pacing and state rules not just embedding a trailer and calling it done.
 
 It supports:
 
 - preview autoplay after an idle countdown
 - manual trailer playback with controls and unmuted audio
 - fade-out cinema UI states when the trailer takes over
-- timed fade-in of the player surface so the route transition feels deliberate instead of jarring
+- timed fade-in of the player surface so the route transition lands smoothly
 - content return behavior when activity comes back
 - fallback trailer and backdrop handling
 - seeded route state from the hero and card rails
@@ -234,10 +234,10 @@ That boundary is intentional. The value here is showing that I can recreate a fa
 
 ## Technical Challenges
 
-- Recreating a recognizable streaming UX without leaning on GSAP, Framer Motion, or prefab motion systems, while still making the interface feel cinematic instead of static
-- Calibrating the hero timing so the 10-second idle countdown, content fade-out, trailer fade-in, and return-on-activity behavior all feel deliberate instead of slightly off or glitchy
-- Carrying that same pacing into the dedicated player page so route changes, preview playback, manual playback, and interface fade states feel connected rather than like separate mini-features
-- Making the TMDB-fed rails feel responsive to real browsing behavior through trackpad or mouse scrolling, hover reveal timing, edge-aware card movement, and focus treatment instead of reading like a basic poster strip
+- Recreating a recognizable streaming UX without leaning on GSAP, Framer Motion, or prefab motion systems, while still keeping the interface cinematic
+- Calibrating the hero timing so the 10-second idle countdown, content fade-out, trailer fade-in, and return-on-activity behavior all stay in sync
+- Carrying that same pacing into the dedicated player page so route changes, preview playback, manual playback, and interface fade states read as one system
+- Making the TMDB-fed rails responsive to real browsing behavior through trackpad or mouse scrolling, hover reveal timing, edge-aware card movement, and focus treatment so they feel like real browsing surfaces
 - Preserving a recognizable streaming-product feel while still pushing polish further through hero masking, row fade treatment, and card hover emphasis without breaking the established product language
 - Tuning the layout so the familiar streaming feel holds together across desktop, tablet, mobile, and wider screens without the hero, rails, or overlay states breaking down
 
